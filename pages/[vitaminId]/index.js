@@ -35,7 +35,8 @@ export async function getStaticPaths() {
     await client.close();
 
     return {
-        fallback: false,
+        /*blocking - 페이지가 미리 생성될때까지 사용자는 아무것도 볼 수 없고 완성된 페이지 제공*/
+        fallback: 'blocking',
         paths: vitamins.map((vitamin) => ({params: {vitaminId: vitamin._id.toString()}}))
     }
 }

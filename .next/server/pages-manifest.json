@@ -1,8 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/[vitaminId]": "pages/[vitaminId].js",
-  "/new-vitamin": "pages/new-vitamin.js"
-}
+{"/_app":"pages/_app.js","/_error":"pages/_error.js","/api/new-vitamin":"pages/api/new-vitamin.js","/new-vitamin":"pages/new-vitamin.html","/_document":"pages/_document.js","/":"pages/index.js","/[vitaminId]":"pages/[vitaminId].js","/404":"pages/404.html"}
