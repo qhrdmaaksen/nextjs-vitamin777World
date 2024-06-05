@@ -1,0 +1,24 @@
+/* RightSideBanner.module.css */
+.sideBanner {
+    position: fixed; /* 고정 위치 */
+    top: 50%; /* 상단에서부터 50% 위치에 배치 */
+    margin: 0px 20px 0px 0px;
+    left: -100px; /* 왼쪽 정렬 */
+    transform: translateY(-50%); /* Y축 기준 50%만큼 이동하여 중앙 정렬 */
+    width: 30px; /* 너비 설정 */
+    height: 350px;
+    background-color: #f1f1f1; /* 배경색 설정 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    z-index: 1000; /* 다른 요소들 위에 표시 */
+}
+
+.bannerContent {
+    padding: 20px; /* 내용에 패딩 추가 */
+
+}
+
+.banner-content h2,
+.banner-content p {
+    margin: 0; /* 마진 제거 */
+    padding: 10px 0; /* 패딩 추가 */
+}
