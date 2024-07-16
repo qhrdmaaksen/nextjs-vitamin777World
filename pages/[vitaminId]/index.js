@@ -2,6 +2,7 @@ import VitaminDetail from "../../components/vitamins/VitaminDetail";
 import {MongoClient, ObjectId} from "mongodb";
 import {Fragment} from "react";
 import Head from "next/head";
+import { getMongoUri } from "../../config/db";
 
 function VitaminDetails(props) {
     return (
@@ -21,10 +22,7 @@ function VitaminDetails(props) {
 }
 
 export async function getStaticPaths() {
-
-    const client = await MongoClient.connect(
-        'mongodb+srv://vitamin7777777:lORyN6Qiye7191vZ@cluster0.4ocsomh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-    );
+    const client = await MongoClient.connect(getMongoUri());
 
     const db = client.db();
     const vitaminsCollection = db.collection('vitamins');
@@ -41,18 +39,22 @@ export async function getStaticPaths() {
     }
 }
 
+/*
+* getStaticProps 는 nextJS 에서 제공하는 함수로, 페이지 빌드 시 실행되며 정적 데이터 생성
+* getStaticProps 함수는 비동기적으로 실행되며, context 객체를 인자로 받음,context 객체에는 현재 페이지에 대한 정보가 포함되어 있음
+* */
 export async function getStaticProps(context) {
+    //vitaminId는 context.params.vitaminId에서 가져온 것으로, 현재 페이지의 URL 경로에서 추출된 vitamin ID
     const vitaminId = context.params.vitaminId;
-
-    const client = await MongoClient.connect(
-        'mongodb+srv://vitamin7777777:lORyN6Qiye7191vZ@cluster0.4ocsomh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-    );
+    // MongoClient.connect()를 통해 MongoDB Atlas 클러스터에 연결,연결 문자열에는 사용자 이름, 비밀번호, 데이터베이스 이름 등이 포함
+    const client = await MongoClient.connect(getMongoUri());
 
     const db = client.db();
+    //db.collection('vitamins')를 통해 'vitamins' 컬렉션을 가져옴
     const vitaminsCollection = db.collection('vitamins');
-
+    //vitaminsCollection.findOne({_id: new ObjectId(vitaminId)})를 통해 특정 vitamin ID에 해당하는 문서를 가져옴
     const selectedVitamin = await vitaminsCollection.findOne({_id: new ObjectId(vitaminId)});
-
+    //client.close()를 통해 MongoDB 클라이언트 연결을 닫음
     await client.close();
 
     return {

@@ -1,5 +1,6 @@
 import classes from './MainNavigation.module.css';
 import Link from "next/link";
+import HoverEtcButton from "../vitamins/HoverDropMenuComponent";
 
 function MainNavigation() {
 
@@ -10,6 +11,10 @@ function MainNavigation() {
       </div>
       <nav>
         <ul>
+            <li>
+                <HoverEtcButton title="게시판" />
+                <HoverEtcButton title="오시는길" />
+            </li>
           <li>
             <Link href='/'>
                 <p className={classes.title}>vitamin777World</p>
