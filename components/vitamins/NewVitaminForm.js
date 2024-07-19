@@ -31,23 +31,23 @@ function NewVitaminForm(props) {
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor='title'>비타민 이름</label>
-          <input type='text' required id='title' ref={titleInputRef} />
+          <label htmlFor="title">비타민 이름</label>
+          <input type="text" required id="title" ref={titleInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='image'>비타민 이미지</label>
-          <input type='url' required id='image' ref={imageInputRef} />
+          <label htmlFor="image">비타민 이미지</label>
+          <input type="url" required id="image" ref={imageInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='address'>비타민 제품 링크</label>
-          <input type='text' required id='address' ref={addressInputRef} />
+          <label htmlFor="address">비타민 제품 링크</label>
+          <input type="text" required id="address" ref={addressInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='description'>비타민 제품 설명</label>
+          <label htmlFor="description">비타민 제품 설명</label>
           <textarea
-            id='description'
+            id="description"
             required
-            rows='5'
+            rows="5"
             ref={descriptionInputRef}
           ></textarea>
         </div>
