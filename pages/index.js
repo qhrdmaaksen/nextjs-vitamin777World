@@ -6,7 +6,7 @@ import RightSideBanner from '../components/banner/RightSideBanner';
 import LeftSideBanner from '../components/banner/LeftSideBanner';
 import AdminInputForm from '../components/vitamins/AdminInputForm';
 import { getMongoUri } from '../config/db';
-import VitaminKakaoMapsPage from '../components/vitamins/VitaminKakaoMapsPage';
+import VitaminKakaoMaps from '../components/vitamins/VitaminKakaoMaps';
 
 const RightBannerImages = [
   '/util/3d-delicious-seasonal-fruits_23-2151046863.jpg',
@@ -32,7 +32,6 @@ function HomePage(props) {
       <RightSideBanner RightBannerImages={RightBannerImages} interval={4000} />
       <LeftSideBanner LeftBannerImages={LeftBannerImages} interval={4000} />
       <AdminInputForm />
-      <VitaminKakaoMapsPage width="100%" height="500px" />
       <VitaminList vitamins={props.vitamins} />
     </Fragment>
   );

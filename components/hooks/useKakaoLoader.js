@@ -17,7 +17,7 @@ function useKakaoLoader() {
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_KEY}&autoload=false`;
     script.async = true;
 
-    // 로드 완료 핸들러(로드완료 후 맵스 초기화)
+    // 로드 완료 핸들러(로드완료 후 맵스 사용 준비 완료)
     script.onload = () => {
       window.kakao.maps.load(() => {
         setIsLoaded(true);

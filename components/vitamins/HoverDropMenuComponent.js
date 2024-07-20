@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './HoverDropMenuComponent.module.css';
 
 const DROPDOWN_CONTENT = {
@@ -12,6 +12,7 @@ function HoverDropMenuComponent({ title }) {
   // 터지 메뉴 여부 확인 상태 관리 isTouchMenu
   const [isTouchMenu, setIsTouchMenu] = useState(false);
 
+
   // 컴포넌트 마운트 될때 한번만 실행
   // 현재 브라우저가 터치 메뉴를 지원하는지 확인
   useEffect(() => {
@@ -24,6 +25,13 @@ function HoverDropMenuComponent({ title }) {
   const handleMouseLeave = () => !isTouchMenu && setIsOpen(false);
 
   const dropdownContent = DROPDOWN_CONTENT[title];
+
+  const handleMapsClick = () => {
+    setIsOpen(false);
+    if(dropdownContent === '지도') {
+      window.location.href = '/maps'
+    }
+  }
 
   return (
     <div
@@ -43,7 +51,7 @@ function HoverDropMenuComponent({ title }) {
       {isOpen && dropdownContent && (
         <ul className={classes.dropdownMenu} role="menu">
           <li>
-            <button onClick={() => setIsOpen(false)}>{dropdownContent}</button>
+            <button onClick={handleMapsClick}>{dropdownContent}</button>
           </li>
         </ul>
       )}
