@@ -60,6 +60,9 @@ function AdminInputForm() {
             <Link href="/new-vitamin">
               <p className={classes.addNewVitamin}>Add New Vitamin</p>
             </Link>
+            <Link href="/new-notice">
+              <p className={classes.addNewVitamin}>Add New Notice</p>
+            </Link>
           </div>
         </div>
       )}

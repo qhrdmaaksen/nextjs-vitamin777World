@@ -1,12 +1,11 @@
 import VitaminList from '../components/vitamins/VitaminList';
-import { Fragment } from 'react';
-import { MongoClient } from 'mongodb';
+import {Fragment} from 'react';
+import {MongoClient} from 'mongodb';
 import Head from 'next/head';
 import RightSideBanner from '../components/banner/RightSideBanner';
 import LeftSideBanner from '../components/banner/LeftSideBanner';
 import AdminInputForm from '../components/vitamins/AdminInputForm';
-import { getMongoUri } from '../config/db';
-import VitaminKakaoMaps from '../components/vitamins/VitaminKakaoMaps';
+import {getMongoUri} from '../config/db';
 
 const RightBannerImages = [
   '/util/3d-delicious-seasonal-fruits_23-2151046863.jpg',
