@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import VitaminNoticeModal from '../../components/vitamins/VitaminNoticeModal';
+import VitaminNoticeList from '../../components/vitamins/VitaminNoticeList';
+import { getMongoUri } from '../../config/db';
+import { MongoClient } from 'mongodb';
 
-function VitaminNoticePage() {
+function VitaminNoticePage(props) {
   const [noticeModalShow, setNoticeModalShow] = useState(false);
 
   function handleNoticeModalShow() {
@@ -16,6 +19,7 @@ function VitaminNoticePage() {
 
   return (
     <>
+      <VitaminNoticeList notices={props.notices} />
       <Button variant="primary" onClick={handleNoticeModalShow}>
         launch vertically centered modal
       </Button>
@@ -29,4 +33,27 @@ function VitaminNoticePage() {
     </>
   );
 }
+
+export async function getStaticProps() {
+  const client = await MongoClient.connect(getMongoUri());
+
+  const db = client.db();
+  const noticesCollection = db.collection('notices');
+
+  const notices = await noticesCollection.find().toArray();
+
+  await client.close();
+
+  return {
+    props: {
+      notices: notices.map((notice) => ({
+        noticeTitle: notice.noticeTitle,
+        noticeContent: notice.noticeContent,
+        id: notice._id.toString(),
+      })),
+    },
+    revalidate: 1,
+  };
+}
+
 export default VitaminNoticePage;

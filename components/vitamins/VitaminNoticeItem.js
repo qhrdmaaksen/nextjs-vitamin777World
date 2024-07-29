@@ -12,7 +12,7 @@ function VitaminNoticeItem(props) {
               <div>
                 {props.noticeContent}
               </div>
-              <button onClick={noticeModalOpen}>보기</button>
+              <button>보기</button>
           </Card>
         </li>
       </ul>

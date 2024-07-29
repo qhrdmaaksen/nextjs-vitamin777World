@@ -6,7 +6,7 @@ async function noticeApiHandler(req, res) {
         const reqNoticeData = req.body;
         const client = await MongoClient.connect(getMongoUri());
         const db = client.db();
-        const noticeCollection = db.collection("notice")
+        const noticeCollection = db.collection("notices")
         const result = await noticeCollection.insertOne(reqNoticeData);
         console.log("등록되는 공지사항 데이터" + result)
 

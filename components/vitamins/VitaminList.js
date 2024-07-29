@@ -18,6 +18,3 @@ function VitaminList(props) {
 }
 
 export default VitaminList;
-// Path: components/vitamins/VitaminList.js
-// Compare this snippet from components/vitamins/NewVitaminForm.js:
-// import classes from './NewVitaminForm.module.css'
