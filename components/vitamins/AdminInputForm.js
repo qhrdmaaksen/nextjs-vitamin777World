@@ -1,12 +1,14 @@
-import { useRef, useState } from 'react';
+import {useRef} from 'react';
 import classes from './AdminInputForm.module.css';
 import LoginCard from '../ui/LoginCard';
 import Link from 'next/link';
+import {useRecoilState} from "recoil";
+import {isLoggedInState} from "../../atoms/bannerStateAtoms";
 
 function AdminInputForm() {
   const idInputRef = useRef();
   const passwordInputRef = useRef();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
 
   function loginSubmitHandler(event) {
     event.preventDefault();

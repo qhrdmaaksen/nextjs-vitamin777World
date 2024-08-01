@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import {useEffect} from 'react';
+import {useRecoilState} from "recoil";
+import {isLoadedState} from "../../atoms/bannerStateAtoms";
 
 // 카카오 지도 API 를 로드하는 커스텀 훅
 function useKakaoLoader() {
   // 로드 완료 상태 관리
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useRecoilState(isLoadedState);
 
   useEffect(function loadedHandlerEffect() {
     // 카카오 맵스 sdk 로드되어있는지 확인, 로드되있다면 로드 상태 true

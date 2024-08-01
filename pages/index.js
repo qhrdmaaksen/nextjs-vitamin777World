@@ -7,16 +7,6 @@ import LeftSideBanner from '../components/banner/LeftSideBanner';
 import AdminInputForm from '../components/vitamins/AdminInputForm';
 import {getMongoUri} from '../config/db';
 
-const RightBannerImages = [
-  '/util/3d-delicious-seasonal-fruits_23-2151046863.jpg',
-  '/util/close-up-citrus-sesonal-fruits-winter_23-2151035447.jpg',
-  '/util/close-up-futuristic-soft-drink_23-2151281958.jpg',
-];
-const LeftBannerImages = [
-  '/util/raw-foodstuff-with-water-drops-studio_23-2151364890.jpg',
-  '/util/view-abstract-fluid-monochrome-palette_23-2150635178.jpg',
-  '/util/bottle-lemons-lemons-grapefruit-are-displayed-white-background_772785-16214.jpg',
-];
 
 function HomePage(props) {
   return (
@@ -28,8 +18,8 @@ function HomePage(props) {
           content="vitamin, vitamins, health, multi vitamin, vitamins platform"
         />
       </Head>
-      <RightSideBanner RightBannerImages={RightBannerImages} interval={4000} />
-      <LeftSideBanner LeftBannerImages={LeftBannerImages} interval={4000} />
+      <RightSideBanner interval={4000} />
+      <LeftSideBanner interval={4000} />
       <AdminInputForm />
       <VitaminList vitamins={props.vitamins} />
     </Fragment>

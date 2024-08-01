@@ -1,12 +1,18 @@
-import { useEffect, useState } from 'react';
+import {useEffect} from 'react';
 import classes from './RightSideBanner.module.css';
+import {currentSlideImageState, rightSlideImageState} from "../../atoms/bannerStateAtoms";
+import {useRecoilState, useRecoilValue} from "recoil";
 
 // Props 로 들어올 BannerImages 는 이미지의 경로를 담은 배열
 // interval 은 이미지가 전환되는 시간 간격을 나타냄
 
-function RightSideBanner({ RightBannerImages, interval = 3000 }) {
+function RightSideBanner({ interval }) {
   {
-    const [currentSlideImage, setCurrentSlideImage] = useState(0);
+    const [currentSlideImage, setCurrentSlideImage] = useRecoilState(currentSlideImageState);
+    // rightSlideImageState 는 atoms 폴더의 bannerStateAtoms.js 에서 정의한 rightSlideImageState 를 가져옴
+    const RightBannerImages = useRecoilValue(rightSlideImageState);
+
+
 
     // useEffect 를 이용하여 interval 마다 currentSlideImage 를 변경
     useEffect(() => {

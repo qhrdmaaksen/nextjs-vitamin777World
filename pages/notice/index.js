@@ -1,12 +1,13 @@
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import VitaminNoticeModal from '../../components/vitamins/VitaminNoticeModal';
 import VitaminNoticeList from '../../components/vitamins/VitaminNoticeList';
-import { getMongoUri } from '../../config/db';
-import { MongoClient } from 'mongodb';
+import {getMongoUri} from '../../config/db';
+import {MongoClient} from 'mongodb';
+import {useRecoilState} from "recoil";
+import {noticeModalShowState} from "../../atoms/bannerStateAtoms";
 
 function VitaminNoticePage(props) {
-  const [noticeModalShow, setNoticeModalShow] = useState(false);
+  const [noticeModalShow, setNoticeModalShow] = useRecoilState(noticeModalShowState);
 
   function handleNoticeModalShow() {
     console.log('handleNoticeModalShow');
