@@ -16,7 +16,7 @@ function RightSideBanner({ interval }) {
 
     // useEffect 를 이용하여 interval 마다 currentSlideImage 를 변경
     useEffect(() => {
-      const nextSlideTimer = setInterval(() => {
+      const rightNextSlideTimer = setInterval(() => {
         setCurrentSlideImage(
           (prevImage) => (prevImage + 1) % RightBannerImages.length,
         );
@@ -24,7 +24,7 @@ function RightSideBanner({ interval }) {
 
       // 컴포넌트가 unmount 되면 interval 을 clear 해줘서 메모리 누수 방지
       return () => {
-        clearInterval(nextSlideTimer);
+        clearInterval(rightNextSlideTimer);
       };
     }, [RightBannerImages.length, interval]);
 
