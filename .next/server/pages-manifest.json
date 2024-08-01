@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/new-vitamin": "pages/new-vitamin.js",
-  "/new-notice": "pages/new-notice.js",
-  "/maps": "pages/maps.js"
+  "/maps": "pages/maps.js",
+  "/": "pages/index.js",
+  "/new-vitamin": "pages/new-vitamin.js"
 }

@@ -4,7 +4,7 @@ import VitaminNoticeList from '../../components/vitamins/VitaminNoticeList';
 import {getMongoUri} from '../../config/db';
 import {MongoClient} from 'mongodb';
 import {useRecoilState} from "recoil";
-import {noticeModalShowState} from "../../atoms/bannerStateAtoms";
+import {noticeModalShowState} from "../../atoms/stateAtoms";
 
 function VitaminNoticePage(props) {
   const [noticeModalShow, setNoticeModalShow] = useRecoilState(noticeModalShowState);

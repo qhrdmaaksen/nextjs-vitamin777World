@@ -3,7 +3,7 @@ import classes from './AdminInputForm.module.css';
 import LoginCard from '../ui/LoginCard';
 import Link from 'next/link';
 import {useRecoilState} from "recoil";
-import {isLoggedInState} from "../../atoms/bannerStateAtoms";
+import {isLoggedInState} from "../../atoms/stateAtoms";
 
 function AdminInputForm() {
   const idInputRef = useRef();

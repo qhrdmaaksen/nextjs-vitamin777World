@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {useRecoilState} from "recoil";
-import {isLoadedState} from "../../atoms/bannerStateAtoms";
+import {isLoadedState} from "../../atoms/stateAtoms";
 
 // 카카오 지도 API 를 로드하는 커스텀 훅
 function useKakaoLoader() {

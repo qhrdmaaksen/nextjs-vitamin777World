@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import classes from './RightSideBanner.module.css';
-import {currentSlideImageState, rightSlideImageState} from "../../atoms/bannerStateAtoms";
+import {rightCurrentSlideImageState, rightSlideImageState} from "../../atoms/stateAtoms";
 import {useRecoilState, useRecoilValue} from "recoil";
 
 // Props 로 들어올 BannerImages 는 이미지의 경로를 담은 배열
@@ -8,8 +8,8 @@ import {useRecoilState, useRecoilValue} from "recoil";
 
 function RightSideBanner({ interval }) {
   {
-    const [currentSlideImage, setCurrentSlideImage] = useRecoilState(currentSlideImageState);
-    // rightSlideImageState 는 atoms 폴더의 bannerStateAtoms.js 에서 정의한 rightSlideImageState 를 가져옴
+    const [currentSlideImage, setCurrentSlideImage] = useRecoilState(rightCurrentSlideImageState);
+    // rightSlideImageState 는 atoms 폴더의 stateAtoms.js 에서 정의한 rightSlideImageState 를 가져옴
     const RightBannerImages = useRecoilValue(rightSlideImageState);
 
 

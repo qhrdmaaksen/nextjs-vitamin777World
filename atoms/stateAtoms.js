@@ -14,8 +14,13 @@ const LeftBannerImages = [
 ];
 
 // atom : 상태의 단위, 업데이트와 구독이 가능
-export const currentSlideImageState = atom({
+export const leftCurrentSlideImageState = atom({
     key: 'currentSlideImageState',
+    default: 0,
+})
+
+export const rightCurrentSlideImageState = atom({
+    key: 'rightCurrentSlideImageState',
     default: 0,
 })
 
