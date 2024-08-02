@@ -1,13 +1,13 @@
 import { MongoClient } from 'mongodb';
-// config/db 에서 mongodb uri 를 가져옴
-import { getMongoUri } from '../../config/db';
+// config/db 에서 mongodb url 를 가져옴
+import { getMongoUrl } from '../../config/db';
 
 // api POST 요청 일 경우에 mongodb 에 데이터를 추가하는 코드
 async function handler(req, res) {
   if (req.method === 'POST') {
     const data = req.body;
-    //getMongoUri() 함수로 가져온 URI 를 사용하여 MongoDB에 연결
-    const client = await MongoClient.connect(getMongoUri());
+    //getMongoUrl() 함수로 가져온 URL 를 사용하여 MongoDB에 연결
+    const client = await MongoClient.connect(getMongoUrl());
 
     const db = client.db();
     // db 에서 vitamins 컬렉션을 가져옴

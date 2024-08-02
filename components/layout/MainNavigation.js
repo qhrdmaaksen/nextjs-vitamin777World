@@ -1,6 +1,6 @@
 import classes from './MainNavigation.module.css';
 import Link from 'next/link';
-import HoverEtcButton from '../vitamins/HoverDropMenuComponent';
+import HoverDropMenuComponent from '../vitamins/HoverDropMenuComponent';
 
 function MainNavigation() {
   return (
@@ -11,8 +11,8 @@ function MainNavigation() {
       <nav>
         <ul>
           <li>
-            <HoverEtcButton title="공지사항" />
-            <HoverEtcButton title="오시는길" />
+            <HoverDropMenuComponent title="공지사항" />
+            <HoverDropMenuComponent title="오시는길" />
           </li>
           <li>
             <Link href="/">

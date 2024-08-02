@@ -5,7 +5,8 @@ import Head from 'next/head';
 import RightSideBanner from '../components/banner/RightSideBanner';
 import LeftSideBanner from '../components/banner/LeftSideBanner';
 import AdminInputForm from '../components/vitamins/AdminInputForm';
-import {getMongoUri} from '../config/db';
+import {getMongoUrl} from '../config/db';
+import VitaminSearchBox from "../components/vitamins/VitaminSearchBox";
 
 
 function HomePage(props) {
@@ -18,6 +19,7 @@ function HomePage(props) {
           content="vitamin, vitamins, health, multi vitamin, vitamins platform"
         />
       </Head>
+      <VitaminSearchBox />
       <RightSideBanner interval={4000} />
       <LeftSideBanner interval={4000} />
       <AdminInputForm />
@@ -39,7 +41,7 @@ function HomePage(props) {
 
 export async function getStaticProps() {
   // nextJS 에서 서버 측 코드에서 fetch 를 사용할 수 있도록 기능 추가
-  const client = await MongoClient.connect(getMongoUri());
+  const client = await MongoClient.connect(getMongoUrl());
 
   const db = client.db();
   const vitaminsCollection = db.collection('vitamins');

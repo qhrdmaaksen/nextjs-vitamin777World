@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import VitaminNoticeModal from '../../components/vitamins/VitaminNoticeModal';
 import VitaminNoticeList from '../../components/vitamins/VitaminNoticeList';
-import {getMongoUri} from '../../config/db';
+import {getMongoUrl} from '../../config/db';
 import {MongoClient} from 'mongodb';
 import {useRecoilState} from "recoil";
 import {noticeModalShowState} from "../../atoms/stateAtoms";
@@ -36,7 +36,7 @@ function VitaminNoticePage(props) {
 }
 
 export async function getStaticProps() {
-  const client = await MongoClient.connect(getMongoUri());
+  const client = await MongoClient.connect(getMongoUrl());
 
   const db = client.db();
   const noticesCollection = db.collection('notices');

@@ -1,10 +1,10 @@
 import { MongoClient } from "mongodb";
-import { getMongoUri } from "../../config/db";
+import { getMongoUrl } from "../../config/db";
 
 async function noticeApiHandler(req, res) {
     if( req.method === "POST") {
         const reqNoticeData = req.body;
-        const client = await MongoClient.connect(getMongoUri());
+        const client = await MongoClient.connect(getMongoUrl());
         const db = client.db();
         const noticeCollection = db.collection("notices")
         const result = await noticeCollection.insertOne(reqNoticeData);

@@ -6,12 +6,12 @@ import useKakaoLoader from "../hooks/useKakaoLoader";
 *또한 지도 중심에 마커를 추가하여 특정 위치를 표시*/
 const VitaminKakaoMaps = ({ width = '100%', height = '400px' }) => {
     const mapRef = useRef(null);
-    const isLoaded = useKakaoLoader();
+    const isLoadedKakaoMaps = useKakaoLoader();
 
-    // isLoaded 의 상태 변화에 따라 실행되는 효과
+    // isLoadedKakaoMaps 의 상태 변화에 따라 실행되는 효과
     useEffect(() => {
         // 카카오 맵스 sdk 가 로드되지 않았거나, sdk 객체가 없다면 함수 종료
-        if (!isLoaded || !window.kakao || !window.kakao.maps) return;
+        if (!isLoadedKakaoMaps || !window.kakao || !window.kakao.maps) return;
 
         // 지도 옵션 설정
         const options = {
@@ -29,10 +29,10 @@ const VitaminKakaoMaps = ({ width = '100%', height = '400px' }) => {
         });
         marker.setMap(map);
 
-    }, [isLoaded]);
+    }, [isLoadedKakaoMaps]);
 
     // 지도 로드되지않았을 때 로딩중 표시
-    if(!isLoaded) {
+    if(!isLoadedKakaoMaps) {
         return <div>지도 로딩중...</div>
     }
 

@@ -1,7 +1,7 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import classes from './HoverDropMenuComponent.module.css';
 import {useRecoilState} from "recoil";
-import {isOpenDropMenuState, isTouchMenuState} from "../../atoms/stateAtoms";
+import {isTouchMenuState} from "../../atoms/stateAtoms";
 
 // 드롭 다운 메뉴 구조 정의, 메뉴 항목에 대한 레이블(표시될 텍스트)과 경로(클릭시 이동경로)를 지정
 const DROPDOWN_CONTENT = {
@@ -11,7 +11,7 @@ const DROPDOWN_CONTENT = {
 
 function HoverDropMenuComponent({ title }) {
   // 드롭 다운 메뉴의 열림과 닫힘 상태 관리 isOpenDropMenu
-  const [isOpenDropMenu, setIsOpenDropMenu] = useRecoilState(isOpenDropMenuState);
+  const [isOpenDropMenu, setIsOpenDropMenu] = useState(false);
   // 터지 메뉴 여부 확인 상태 관리 isTouchMenu
   const [isTouchMenu, setIsTouchMenu] = useRecoilState(isTouchMenuState);
 

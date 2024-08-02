@@ -2,7 +2,7 @@ import VitaminDetail from '../../components/vitamins/VitaminDetail';
 import { MongoClient, ObjectId } from 'mongodb';
 import { Fragment } from 'react';
 import Head from 'next/head';
-import { getMongoUri } from '../../config/db';
+import { getMongoUrl } from '../../config/db';
 
 function VitaminDetails(props) {
   const { vitaminData } = props;
@@ -23,7 +23,7 @@ function VitaminDetails(props) {
 }
 
 export async function getStaticPaths() {
-  const client = await MongoClient.connect(getMongoUri());
+  const client = await MongoClient.connect(getMongoUrl());
 
   const db = client.db();
   const vitaminsCollection = db.collection('vitamins');
@@ -50,7 +50,7 @@ export async function getStaticProps(context) {
   //vitaminId는 context.params.vitaminId에서 가져온 것으로, 현재 페이지의 URL 경로에서 추출된 vitamin ID
   const vitaminId = context.params.vitaminId;
   // MongoClient.connect()를 통해 MongoDB Atlas 클러스터에 연결,연결 문자열에는 사용자 이름, 비밀번호, 데이터베이스 이름 등이 포함
-  const client = await MongoClient.connect(getMongoUri());
+  const client = await MongoClient.connect(getMongoUrl());
 
   const db = client.db();
   //db.collection('vitamins')를 통해 'vitamins' 컬렉션을 가져옴
