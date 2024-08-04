@@ -6,6 +6,9 @@ import { getMongoUrl } from '../../config/db';
 
 function VitaminDetails(props) {
   const { vitaminData } = props;
+  if (!vitaminData) {
+    return <p>loading...</p>;
+  }
   return (
     <Fragment>
       <Head>
@@ -29,7 +32,9 @@ export async function getStaticPaths() {
   const vitaminsCollection = db.collection('vitamins');
 
   // 객체중에 id 만 가져오기
-  const vitamins = await vitaminsCollection.find({}, { _id: 1 }).toArray();
+  const vitamins = await vitaminsCollection
+    .find({}, { projection: { _id: 1 } })
+    .toArray();
 
   await client.close();
 
@@ -49,6 +54,14 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   //vitaminId는 context.params.vitaminId에서 가져온 것으로, 현재 페이지의 URL 경로에서 추출된 vitamin ID
   const vitaminId = context.params.vitaminId;
+
+  // vitaminId 유효성 검사
+  if (!ObjectId.isValid(vitaminId)) {
+    return {
+      notFound: true,
+    };
+  }
+
   // MongoClient.connect()를 통해 MongoDB Atlas 클러스터에 연결,연결 문자열에는 사용자 이름, 비밀번호, 데이터베이스 이름 등이 포함
   const client = await MongoClient.connect(getMongoUrl());
 

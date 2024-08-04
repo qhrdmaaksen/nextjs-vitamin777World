@@ -1,15 +1,15 @@
 import VitaminList from '../components/vitamins/VitaminList';
-import {Fragment} from 'react';
-import {MongoClient} from 'mongodb';
+import { Fragment, useState } from 'react';
+import { MongoClient } from 'mongodb';
 import Head from 'next/head';
 import RightSideBanner from '../components/banner/RightSideBanner';
 import LeftSideBanner from '../components/banner/LeftSideBanner';
 import AdminInputForm from '../components/vitamins/AdminInputForm';
-import {getMongoUrl} from '../config/db';
-import VitaminSearchBox from "../components/vitamins/VitaminSearchBox";
-
+import { getMongoUrl } from '../config/db';
+import VitaminSearchBox from '../components/vitamins/VitaminSearchBox';
 
 function HomePage(props) {
+  const [vitamins, setVitamins] = useState(props.vitamins);
   return (
     <Fragment>
       <Head>
@@ -19,11 +19,11 @@ function HomePage(props) {
           content="vitamin, vitamins, health, multi vitamin, vitamins platform"
         />
       </Head>
-      <VitaminSearchBox />
+      <VitaminSearchBox setVitamins={{ setVitamins }} />
       <RightSideBanner interval={4000} />
       <LeftSideBanner interval={4000} />
       <AdminInputForm />
-      <VitaminList vitamins={props.vitamins} />
+      <VitaminList vitamins={vitamins} />
     </Fragment>
   );
 }
