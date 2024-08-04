@@ -7,6 +7,7 @@ import { searchTermState } from '../../atoms/stateAtoms';
 /*왜?: Next.js의 라우팅 기능을 사용하기 위해 useRouter 훅을 가져옵니다.
 이유: 페이지 간의 네비게이션을 관리하기 위해 현재 라우터 객체에 접근할 수 있게 함*/
 import { useRouter } from 'next/router';
+import classes from './VitaminSearchBox.module.css';
 
 /*왜?: 비타민 검색 박스 컴포넌트를 정의합니다.
 이유: 사용자로부터 검색어를 입력받고, 이를 처리하여 검색 결과 페이지로 이동하기 위해 컴포넌트를 생성*/
@@ -21,7 +22,7 @@ export const VitaminSearchBox = () => {
   /*폼 제출 이벤트를 처리하기 위한 비동기 함수입니다.
 이유: 사용자가 검색어를 제출했을 때 발생하는 이벤트를 처리하여, 검색 결과 페이지로 이동할 수 있도록 합*/
   const handleInputSearchSubmit = async (e) => {
-  /*왜?: 폼의 기본 제출 동작을 방지합니다.
+    /*왜?: 폼의 기본 제출 동작을 방지합니다.
 이유: 페이지가 새로 고쳐지는 것을 방지하여, JavaScript를 통해 검색 결과 페이지로 리다이렉트할 수 있도록 함*/
     e.preventDefault();
 
@@ -36,18 +37,23 @@ export const VitaminSearchBox = () => {
     // 입력 필드 초기화
     setSearchTerm('');
   };
+
   return (
     <>
       <form onSubmit={handleInputSearchSubmit}>
         {/*왜?: 사용자로부터 검색어를 입력받기 위한 텍스트 입력 필드를 생성합니다.
         이유: onChange 이벤트를 통해 사용자 입력을 실시간으로 searchTerm 상태에 업데이트하고,
         value 속성을 통해 상태와 입력 필드를 동기화함*/}
-        <input
-          type="text"
-          placeholder="제품을 입력해주세요."
-          onChange={(e) => setSearchTerm(e.target.value)}
-          value={searchTerm}
-        />
+        <div className={classes.searchInputDiv}>
+            <p>제품 검색</p>
+            <input
+              className={classes.searchInputLarge}
+              type="text"
+              placeholder="제품을 입력해주세요."
+              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchTerm}
+            />
+        </div>
       </form>
     </>
   );
