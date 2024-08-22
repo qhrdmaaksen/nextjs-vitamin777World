@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/search/[query]": "pages/search/[query].js",
+  "/new-vitamin": "pages/new-vitamin.js",
   "/[vitaminId]": "pages/[vitaminId].js"
 }

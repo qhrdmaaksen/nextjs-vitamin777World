@@ -1,13 +1,24 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import classes from './HoverDropMenuComponent.module.css';
-import {useRecoilState} from "recoil";
-import {isTouchMenuState} from "../../atoms/stateAtoms";
+import { useRecoilState } from 'recoil';
+import { isTouchMenuState } from '../../atoms/stateAtoms';
+import Link from 'next/link';
 
 // 드롭 다운 메뉴 구조 정의, 메뉴 항목에 대한 레이블(표시될 텍스트)과 경로(클릭시 이동경로)를 지정
 const DROPDOWN_CONTENT = {
-  공지사항: { label: '게시판', path: '/notice' },
-  오시는길: { label: '지도', path: '/maps' },
+  공지사항: [
+    { label: '게시판', path: '/notice' },
+    { label: '배송', path: '/notice' },
+    { label: '환불', path: '/notice' },
+    { label: 'Etc', path: '/notice' },
+  ],
+  오시는길: [
+    { label: '지도', path: '/maps' },
+    { label: '대중교통', path: '/maps' },
+    { label: '약도', path: '/maps' },
+  ],
 };
+
 
 function HoverDropMenuComponent({ title }) {
   // 드롭 다운 메뉴의 열림과 닫힘 상태 관리 isOpenDropMenu
@@ -47,7 +58,6 @@ function HoverDropMenuComponent({ title }) {
     setIsOpenDropMenu(false);
     const { label, path } = DROPDOWN_CONTENT[title] || {};
     console.log(`${label} 의 경로: ${path}`);
-    window.location.href = path;
   }, [title]);
 
   const dropdownContent = DROPDOWN_CONTENT[title];
@@ -69,11 +79,13 @@ function HoverDropMenuComponent({ title }) {
       {/*조건부 렌더링을 사용하여 isOpenDropMenu 이 true 이고 dropdownContent 가 존재할 때만 드롭다운 메뉴를 표시*/}
       {isOpenDropMenu && dropdownContent && (
         <ul className={classes.dropdownMenu} role="menu">
-          <li>
-            <button onClick={handleDropdownClick}>
-              {dropdownContent.label}
-            </button>
-          </li>
+          {dropdownContent.map((content, index) => (
+            <li key={index}>
+              <Link href={content.path}>
+                <button onClick={handleDropdownClick}>{content.label}</button>
+              </Link>
+            </li>
+          ))}
         </ul>
       )}
     </div>

@@ -10,5 +10,6 @@
 
 .searchInputLarge {
     width: 300px;
-    height: 50px;
+    height: 40px;
+    border-radius: 10px;
 }
