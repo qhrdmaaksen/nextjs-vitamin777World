@@ -16,6 +16,7 @@ function VitaminDetails(props) {
         <meta name="description" content={vitaminData.description} />
       </Head>
       <VitaminDetail
+        id={vitaminData.id}
         image={vitaminData.image}
         title={vitaminData.title}
         address={vitaminData.address}
@@ -72,6 +73,14 @@ export async function getStaticProps(context) {
   const selectedVitamin = await vitaminsCollection.findOne({
     _id: new ObjectId(vitaminId),
   });
+
+    //selectedVitamin 이 없는 경우, notFound: true 를 반환하여 404 페이지를 표시
+  if(!selectedVitamin) {
+    return {
+      notFound: true,
+    }
+  }
+
   //client.close()를 통해 MongoDB 클라이언트 연결을 닫음
   await client.close();
 
@@ -79,7 +88,7 @@ export async function getStaticProps(context) {
     props: {
       vitaminData: {
         id: selectedVitamin._id.toString(),
-        image: selectedVitamin.image,
+        image: selectedVitamin.image || '', //이미지가 없는 경우 빈 문자열 반환
         title: selectedVitamin.title,
         address: selectedVitamin.address,
         description: selectedVitamin.description,

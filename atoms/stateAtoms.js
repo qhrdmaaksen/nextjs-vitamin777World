@@ -59,3 +59,13 @@ export const searchTermState = atom({
   key: `searchTermState${v1()}`,
   default: '',
 })
+
+export const isLoadingState = atom({
+  key: `isLoadingState${v1()}`,
+  default: false,
+})
+
+export const errorMessageState = atom({
+  key: `errorMessageState${v1()}`,
+  default: '',
+})

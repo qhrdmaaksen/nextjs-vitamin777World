@@ -24,6 +24,7 @@ function AdminInputForm() {
     if (enteredId === adminId && enteredPassword === adminPassword) {
       // 로그인 성공 시 알림창 팝업
       alert('관리자 로그인 성공');
+
       // 성공 시 수행할 작업
       setIsLoggedIn(true);
     } else {
