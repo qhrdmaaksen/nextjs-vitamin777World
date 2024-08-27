@@ -1,19 +1,15 @@
 import VitaminList from '../components/vitamins/VitaminList';
-import { Fragment, useState } from 'react';
-import { MongoClient } from 'mongodb';
+import {Fragment, useState} from 'react';
+import {MongoClient} from 'mongodb';
 import Head from 'next/head';
 import RightSideBanner from '../components/banner/RightSideBanner';
 import LeftSideBanner from '../components/banner/LeftSideBanner';
 import AdminInputForm from '../components/vitamins/AdminInputForm';
-import { getMongoUrl } from '../config/db';
+import {getMongoUrl} from '../config/db';
 import VitaminSearchBox from '../components/vitamins/VitaminSearchBox';
-import { useRecoilState } from 'recoil';
-import { isLoggedInState } from '../atoms/stateAtoms';
-import VitaminDetail from '../components/vitamins/VitaminDetail';
 
 function HomePage(props) {
   const [vitamins, setVitamins] = useState(props.vitamins);
-  const [isLoggedIn] = useRecoilState(isLoggedInState);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3; // 페이지당 제품 수 3 으로 설정
 
@@ -65,7 +61,6 @@ function HomePage(props) {
       <RightSideBanner interval={4000} />
       <LeftSideBanner interval={4000} />
       <AdminInputForm />
-      <VitaminDetail isLoggedIn={isLoggedIn} />
       <VitaminList vitamins={currentVitamins} />
 
       {/* 페이지 네비게이션 */}

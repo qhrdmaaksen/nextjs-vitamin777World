@@ -3,9 +3,13 @@ import { MongoClient, ObjectId } from 'mongodb';
 import { Fragment } from 'react';
 import Head from 'next/head';
 import { getMongoUrl } from '../../config/db';
+import {isLoggedInState} from "../../atoms/stateAtoms";
+import {useRecoilValue} from "recoil";
 
 function VitaminDetails(props) {
   const { vitaminData } = props;
+  const isLoggedIn = useRecoilValue(isLoggedInState)
+
   if (!vitaminData) {
     return <p>loading...</p>;
   }
@@ -21,6 +25,7 @@ function VitaminDetails(props) {
         title={vitaminData.title}
         address={vitaminData.address}
         description={vitaminData.description}
+        isLoggedIn={isLoggedIn}
       />
     </Fragment>
   );

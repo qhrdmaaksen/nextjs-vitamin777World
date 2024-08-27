@@ -1,11 +1,12 @@
 import classes from './VitaminDetail.module.css';
-import { useRouter } from 'next/router';
-import { useRecoilState } from 'recoil';
-import { errorMessageState, isLoadingState } from '../../atoms/stateAtoms';
+import {useRouter} from 'next/router';
+import {useRecoilState} from 'recoil';
+import {errorMessageState, isLoadingState} from '../../atoms/stateAtoms';
 
-const VitaminDetail = (props, { isLoggedIn }) => {
+const VitaminDetail = ({isLoggedIn, ...props}) => {
   const vitaminData = props;
   console.log('vitaminData: ', props);
+  console.log('isLoggedIn: ', isLoggedIn);
   const router = useRouter();
   const [isLoading, setIsLoading] = useRecoilState(isLoadingState);
   const [errorMessage, setErrorMessage] = useRecoilState(errorMessageState);
