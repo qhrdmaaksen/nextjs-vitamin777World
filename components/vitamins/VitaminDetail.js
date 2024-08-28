@@ -1,9 +1,9 @@
 import classes from './VitaminDetail.module.css';
-import {useRouter} from 'next/router';
-import {useRecoilState} from 'recoil';
-import {errorMessageState, isLoadingState} from '../../atoms/stateAtoms';
+import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { errorMessageState, isLoadingState } from '../../atoms/stateAtoms';
 
-const VitaminDetail = ({isLoggedIn, ...props}) => {
+const VitaminDetail = ({ isLoggedIn, ...props }) => {
   const vitaminData = props;
   console.log('vitaminData: ', props);
   console.log('isLoggedIn: ', isLoggedIn);
@@ -26,9 +26,12 @@ const VitaminDetail = ({isLoggedIn, ...props}) => {
 
     try {
       // 삭제 요청 보내기
-      const response = await fetch(`/api/deleteVitamin?id=${vitaminData.id}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(
+        `http://localhost:3000/api/deleteVitamin?id=${vitaminData.id}`,
+        {
+          method: 'DELETE',
+        },
+      );
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || '삭제 api 요청 실패');
@@ -45,6 +48,21 @@ const VitaminDetail = ({isLoggedIn, ...props}) => {
       setIsLoading(false);
     }
   };
+
+  const handleItemEdit = () => {
+    router.push({
+      pathname: `/vitaminEdit`,
+      query: {
+        id: vitaminData.id,
+        title: vitaminData.title,
+        image: vitaminData.image,
+        address: vitaminData.address,
+        description: vitaminData.description
+      },
+    });
+    console.log('vitaminDataId: ', vitaminData.id);
+  };
+
   return (
     <section className={classes.detail}>
       <img src={vitaminData.image} alt={vitaminData.title} />
@@ -53,9 +71,12 @@ const VitaminDetail = ({isLoggedIn, ...props}) => {
       <p>{vitaminData.description}</p>
       {errorMessage && <p>{errorMessage}</p>}
       {isLoggedIn && (
-        <button onClick={handleItemDelete} disabled={isLoading}>
-          {isLoading ? `삭제중...` : '삭제'}
-        </button>
+        <>
+          <button onClick={handleItemEdit}>수정</button>
+          <button onClick={handleItemDelete} disabled={isLoading}>
+            {isLoading ? `삭제중...` : '삭제'}
+          </button>
+        </>
       )}
     </section>
   );

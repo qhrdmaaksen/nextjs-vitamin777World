@@ -7,7 +7,7 @@ function VitaminNewNoticePage() {
   const router = useRouter();
 
   async function addNoticeHandler(enteredNoticeData) {
-    const response = await fetch('/api/new-notice', {
+    const response = await fetch('http://localhost:3000/api/new-notice', {
       method: 'POST',
       body: JSON.stringify(enteredNoticeData),
       headers: {

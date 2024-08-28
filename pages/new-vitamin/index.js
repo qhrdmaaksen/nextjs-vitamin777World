@@ -14,7 +14,7 @@ function NewVitaminPage() {
    * 요청 바디에 json 형식의 비타민 데이터 포함되있음
    * */
   async function addVitaminHandler(enteredVitaminData) {
-    const response = await fetch('/api/new-vitamin', {
+    const response = await fetch('http://localhost:3000/api/new-vitamin', {
       method: 'POST',
       body: JSON.stringify(enteredVitaminData),
       headers: {
