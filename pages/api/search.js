@@ -31,14 +31,7 @@ export default async function searchHandler(req, res) {
   /*왜?: MongoDB에 연결하기 위해 MongoClient.connect 메서드를 호출합니다.
 이유: 데이터베이스 작업을 수행하기 위해 먼저 MongoDB 와 연결이 필요합니다.
 await 키워드는 연결이 완료될 때까지 기다립니다.*/
-  const client = await MongoClient.connect(getMongoUrl(), {
-    /*왜?: 새로운 URL 파서를 사용하도록 설정합니다.
-이유: MongoDB의 URL 형식이 변경되었기 때문에, 새로운 파서를 사용하면 더 나은 호환성을 제공합니다.*/
-    useNewUrlParser: true,
-    /*왜?: 통합된 토폴로지를 사용하여 MongoDB 클라이언트의 연결 관리를 개선합니다.
-이유: 새로운 클러스터링 및 연결 관리 기능을 활용하여 보다 안정적인 연결을 유지할 수 있습니다.*/
-    useUnifiedTopology: true,
-  });
+  const client = await MongoClient.connect(getMongoUrl());
   /*왜?: 연결된 클라이언트로부터 데이터베이스 객체를 가져옵니다.
 이유: 이 db 객체를 통해 데이터베이스에 직접 접근하여 쿼리를 실행할 수 있습니다.*/
   const db = client.db();

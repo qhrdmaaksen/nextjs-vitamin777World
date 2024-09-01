@@ -44,10 +44,7 @@ export async function getServerSideProps(context) {
 이유: 이 값은 사용자가 검색한 키워드를 나타내며, 데이터베이스 쿼리에 사용*/
   const { query } = context.query;
 
-  const client = await MongoClient.connect(getMongoUrl(), {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  const client = await MongoClient.connect(getMongoUrl());
 
   const db = client.db();
   const vitaminsCollection = db.collection('vitamins');

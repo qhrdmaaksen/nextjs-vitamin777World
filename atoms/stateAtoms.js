@@ -69,3 +69,13 @@ export const errorMessageState = atom({
   key: `errorMessageState${v1()}`,
   default: '',
 })
+
+export const formDataState = atom({
+    key: `formDataState${v1()}`,
+    default: {
+        image: '',
+        title: '',
+        address: '',
+        description: '',
+    },
+})
