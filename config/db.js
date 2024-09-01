@@ -1,4 +1,3 @@
-
 const MONGO_INFO = {
   mongoId: process.env.MONGO_USERNAME,
   mongoPassword: process.env.MONGO_PASSWORD,

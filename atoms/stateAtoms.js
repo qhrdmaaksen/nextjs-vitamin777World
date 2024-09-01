@@ -58,24 +58,29 @@ export const isLoadedState = atom({
 export const searchTermState = atom({
   key: `searchTermState${v1()}`,
   default: '',
-})
+});
 
 export const isLoadingState = atom({
   key: `isLoadingState${v1()}`,
   default: false,
-})
+});
 
 export const errorMessageState = atom({
   key: `errorMessageState${v1()}`,
   default: '',
-})
+});
 
 export const formDataState = atom({
-    key: `formDataState${v1()}`,
-    default: {
-        image: '',
-        title: '',
-        address: '',
-        description: '',
-    },
-})
+  key: `formDataState${v1()}`,
+  default: {
+    image: '',
+    title: '',
+    address: '',
+    description: '',
+  },
+});
+
+export const showModalState = atom({
+  key: `modalShowState${v1()}`,
+  default: false,
+});

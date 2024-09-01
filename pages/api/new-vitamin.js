@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 import { getMongoUrl } from '../../config/db';
 
 // api POST 요청 일 경우에 mongodb 에 데이터를 추가하는 코드
-async function handler(req, res) {
+const handler = async (req, res) => {
   if (req.method === 'POST') {
     const data = req.body;
     //getMongoUrl() 함수로 가져온 URL 를 사용하여 MongoDB에 연결
@@ -20,6 +20,6 @@ async function handler(req, res) {
 
     res.status(201).json({ message: '비타민 제품 데이터베이스 등록 완료' });
   }
-}
+};
 
 export default handler;

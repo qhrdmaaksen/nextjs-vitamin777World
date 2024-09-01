@@ -1,7 +1,16 @@
 .detail {
   text-align: center;
+  padding: 2rem 2rem;
 }
 
 .detail img {
   width: 100%;
+}
+
+.detail div {
+  margin-top: 2rem;
+}
+
+.detail label {
+  font-weight: bold;
 }

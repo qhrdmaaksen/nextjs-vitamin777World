@@ -1,15 +1,16 @@
 .searchInputDiv {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .searchInputDiv p {
-    font-size: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .searchInputLarge {
-    width: 300px;
-    height: 40px;
-    border-radius: 10px;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
 }

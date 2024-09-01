@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 import Head from 'next/head';
 
-function NewVitaminPage() {
+const NewVitaminPage = () => {
   // nextjs 의 라우팅 기능 사용하기 위한 훅
   // nextjs 의 라우터 객체를 가져와 페이지 이동 처리
   const router = useRouter();
@@ -13,7 +13,7 @@ function NewVitaminPage() {
    * fetch 를 사용해 /api/new-vitamin 엔드포인트로 post 요청 보냄
    * 요청 바디에 json 형식의 비타민 데이터 포함되있음
    * */
-  async function addVitaminHandler(enteredVitaminData) {
+  const addVitaminHandler = async (enteredVitaminData) => {
     const response = await fetch('http://localhost:3000/api/new-vitamin', {
       method: 'POST',
       body: JSON.stringify(enteredVitaminData),
@@ -26,7 +26,7 @@ function NewVitaminPage() {
     console.log(data);
     // 뒤로가기 없이 홈페이지로 이동
     await router.replace('/');
-  }
+  };
 
   return (
     <Fragment>
@@ -37,6 +37,6 @@ function NewVitaminPage() {
       <NewVitaminForm onAddVitamin={addVitaminHandler} />
     </Fragment>
   );
-}
+};
 
 export default NewVitaminPage;

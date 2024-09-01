@@ -1,6 +1,6 @@
 import VitaminNoticeItem from './VitaminNoticeItem';
 
-function VitaminNoticeList(props) {
+const VitaminNoticeList = (props) => {
   return (
     <>
       <ul>
@@ -14,6 +14,6 @@ function VitaminNoticeList(props) {
       </ul>
     </>
   );
-}
+};
 
 export default VitaminNoticeList;

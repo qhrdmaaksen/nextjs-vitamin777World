@@ -1,8 +1,8 @@
 import '../styles/globals.css';
 import Layout from '../components/layout/Layout';
-import {RecoilRoot,} from "recoil";
+import { RecoilRoot } from 'recoil';
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <RecoilRoot>
       <Layout>
@@ -10,6 +10,6 @@ function MyApp({ Component, pageProps }) {
       </Layout>
     </RecoilRoot>
   );
-}
+};
 
 export default MyApp;

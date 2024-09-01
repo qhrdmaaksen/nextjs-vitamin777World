@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { formDataState } from '../../atoms/stateAtoms';
 import { useEffect } from 'react';
+import Card from '../../components/ui/Card';
+import classes from './VitaminEdit.module.css';
 
 const VitaminEdit = () => {
   const router = useRouter();
@@ -13,9 +15,9 @@ const VitaminEdit = () => {
       title,
       address,
       image,
-      description
-    })
-  }, [title, address, image, description])
+      description,
+    });
+  }, [title, address, image, description]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -53,39 +55,55 @@ const VitaminEdit = () => {
   };
 
   return (
-    <div>
-      <h1>제품 상세 수정 페이지</h1>
-      <form onSubmit={handleEditSubmit}>
-        <input
-          name="image"
-          type="text"
-          defaultValue={image}
-          placeholder="이미지 링크 입력"
-          onChange={handleInputChange}
-        />
-        <input
-          name="title"
-          type="text"
-          defaultValue={title}
-          placeholder="제목 입력"
-          onChange={handleInputChange}
-        />
-        <input
-          name="address"
-          type="text"
-          defaultValue={address}
-          placeholder="주소 링크 입력"
-          onChange={handleInputChange}
-        />
-        <textarea
-          name="description"
-          defaultValue={description}
-          placeholder="제품 상세 설명 입력"
-          onChange={handleInputChange}
-        />
-        <button>수정 제출</button>
-      </form>
-    </div>
+    <Card>
+      <div className={classes.container}>
+        <h1>제품 상세 수정 페이지</h1>
+        <form onSubmit={handleEditSubmit}>
+          <div>
+            <label htmlFor="image">이미지 링크 입력 </label>
+            <input
+              name="image"
+              type="text"
+              defaultValue={image}
+              placeholder="이미지 링크 입력"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="title">제목 입력 </label>
+            <input
+              name="title"
+              type="text"
+              defaultValue={title}
+              placeholder="제목 입력"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="address">주소 링크 입력 </label>
+            <input
+              name="address"
+              type="text"
+              defaultValue={address}
+              placeholder="주소 링크 입력"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="description">상세 설명 입력 </label>
+            <textarea
+              name="description"
+              defaultValue={description}
+              placeholder="제품 상세 설명 입력"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className={classes.buttonContainer}>
+            <button>수정 제출</button>
+          </div>
+        </form>
+      </div>
+    </Card>
   );
 };
 

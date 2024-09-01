@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .form {
   padding: 1rem;
 }
@@ -12,8 +17,7 @@
   margin-bottom: 0.5rem;
 }
 
-.control input,
-.control textarea {
+.control input {
   display: block;
   font: inherit;
   border-radius: 4px;
@@ -23,8 +27,9 @@
 }
 
 .actions {
-  margin-top: 1rem;
-  text-align: right;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 .actions button {
@@ -36,6 +41,9 @@
   border: 1px solid #77002e;
   border-radius: 4px;
   font-weight: bold;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .actions button:hover,

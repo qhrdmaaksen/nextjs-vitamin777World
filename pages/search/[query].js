@@ -24,7 +24,7 @@ const SearchPage = ({ vitamins, query }) => {
       왜?: 페이지의 메타데이터를 정의하기 위해 Head 컴포넌트를 사용합니다.
       이유: SEO 와 페이지의 정보(제목, 설명 등)를 설정하기 위해 필요합니다.*/}
       <Head>
-      {/*왜?: 페이지의 제목을 동적으로 설정합니다.
+        {/*왜?: 페이지의 제목을 동적으로 설정합니다.
       이유: 검색어에 따라 제목을 변경하여 사용자와 검색 엔진에 유용한 정보를 제공*/}
         <title>비타민 검색: "{query}"</title>
         <meta name="description" content={`Search results for "${query}"`} />
@@ -39,7 +39,7 @@ const SearchPage = ({ vitamins, query }) => {
 /*getServerSideProps
 * 왜?: Next.js의 서버 측 렌더링 기능을 사용하여 페이지가 요청될 때 데이터를 미리 가져옵니다.
 이유: 페이지가 렌더링되기 전에 필요한 데이터를 서버에서 가져와 사용자에게 빠른 응답을 제공하기 위해 필요*/
-export async function getServerSideProps(context) {
+export const getServerSideProps = async (context) => {
   /*왜?: URL 의 쿼리 파라미터에서 query 값을 추출합니다.
 이유: 이 값은 사용자가 검색한 키워드를 나타내며, 데이터베이스 쿼리에 사용*/
   const { query } = context.query;
@@ -81,6 +81,6 @@ export async function getServerSideProps(context) {
       query: query,
     },
   };
-}
+};
 
 export default SearchPage;

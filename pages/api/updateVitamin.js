@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId } from 'mongodb';
 import { getMongoUrl } from '../../config/db';
 
-export default async function updateVitamin(req, res) {
+const updateVitamin = async (req, res) => {
   if (req.method !== 'PUT') {
     res.status(405).end();
     return;
@@ -21,11 +21,13 @@ export default async function updateVitamin(req, res) {
     );
 
     if (updatedVitamin.matchedCount === 0) {
-      return res.status(404).json({ message: '업데이트 비타민 정보 찾을수 없음01'});
+      return res
+        .status(404)
+        .json({ message: '업데이트 비타민 정보 찾을수 없음01' });
     }
 
-    if (updatedVitamin.modifiedCount === 0 ){
-      return res.status(400).json({ message: '수정할 데이터가 없습니다.'})
+    if (updatedVitamin.modifiedCount === 0) {
+      return res.status(400).json({ message: '수정할 데이터가 없습니다.' });
     }
 
     if (!updatedVitamin) {
@@ -42,4 +44,6 @@ export default async function updateVitamin(req, res) {
   } finally {
     await client.close();
   }
-}
+};
+
+export default updateVitamin;

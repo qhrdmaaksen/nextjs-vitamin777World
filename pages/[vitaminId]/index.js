@@ -3,12 +3,12 @@ import { MongoClient, ObjectId } from 'mongodb';
 import { Fragment } from 'react';
 import Head from 'next/head';
 import { getMongoUrl } from '../../config/db';
-import {isLoggedInState} from "../../atoms/stateAtoms";
-import {useRecoilValue} from "recoil";
+import { isLoggedInState } from '../../atoms/stateAtoms';
+import { useRecoilValue } from 'recoil';
 
-function VitaminDetails(props) {
+const VitaminDetails = (props) => {
   const { vitaminData } = props;
-  const isLoggedIn = useRecoilValue(isLoggedInState)
+  const isLoggedIn = useRecoilValue(isLoggedInState);
 
   if (!vitaminData) {
     return <p>loading...</p>;
@@ -29,9 +29,9 @@ function VitaminDetails(props) {
       />
     </Fragment>
   );
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const client = await MongoClient.connect(getMongoUrl());
 
   const db = client.db();
@@ -51,13 +51,13 @@ export async function getStaticPaths() {
       params: { vitaminId: vitamin._id.toString() },
     })),
   };
-}
+};
 
 /*
  * getStaticProps 는 nextJS 에서 제공하는 함수로, 페이지 빌드 시 실행되며 정적 데이터 생성
  * getStaticProps 함수는 비동기적으로 실행되며, context 객체를 인자로 받음,context 객체에는 현재 페이지에 대한 정보가 포함되어 있음
  * */
-export async function getStaticProps(context) {
+export const getStaticProps = async (context) => {
   //vitaminId는 context.params.vitaminId에서 가져온 것으로, 현재 페이지의 URL 경로에서 추출된 vitamin ID
   const vitaminId = context.params.vitaminId;
 
@@ -79,11 +79,11 @@ export async function getStaticProps(context) {
     _id: new ObjectId(vitaminId),
   });
 
-    //selectedVitamin 이 없는 경우, notFound: true 를 반환하여 404 페이지를 표시
-  if(!selectedVitamin) {
+  //selectedVitamin 이 없는 경우, notFound: true 를 반환하여 404 페이지를 표시
+  if (!selectedVitamin) {
     return {
       notFound: true,
-    }
+    };
   }
 
   //client.close()를 통해 MongoDB 클라이언트 연결을 닫음
@@ -100,6 +100,6 @@ export async function getStaticProps(context) {
       },
     },
   };
-}
+};
 
 export default VitaminDetails;

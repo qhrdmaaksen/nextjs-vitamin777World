@@ -15,7 +15,7 @@ import { MongoClient } from 'mongodb';
 
 /*searchHandler 함수는 API 엔드포인트로서 클라이언트의 요청을 처리하기 위해 정의
 async 키워드가 사용되어 비동기 작업을 수행할 수 있으며, req 와 res 매개변수는 각각 요청과 응답 객체를 나타냄*/
-export default async function searchHandler(req, res) {
+const searchHandler = async (req, res) => {
   /*클라이언트가 보낸 요청의 HTTP 메서드가 GET 이 아닌 경우를 확인
   이 API 는 GET 요청에만 응답하도록 설계되어 있음*/
   if (req.method !== 'GET') {
@@ -62,4 +62,6 @@ await 키워드는 연결이 완료될 때까지 기다립니다.*/
   /*왜?: 성공적인 요청에 대해 200 상태 코드와 함께 검색 결과를 JSON 형식으로 반환합니다.
 이유: 클라이언트가 요청한 데이터를 성공적으로 처리했음을 알리고, 필요한 정보를 JSON 형식으로 제공하여 클라이언트에서 쉽게 사용할 수 있도록 함*/
   res.status(200).json(searchResults);
-}
+};
+
+export default searchHandler;

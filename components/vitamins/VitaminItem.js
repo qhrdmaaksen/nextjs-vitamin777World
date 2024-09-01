@@ -2,12 +2,12 @@ import Card from '../ui/Card';
 import classes from './VitaminItem.module.css';
 import { useRouter } from 'next/router';
 
-function VitaminItem(props) {
+const VitaminItem = (props) => {
   const router = useRouter();
 
-  function showDetailsHandler() {
+  const showDetailsHandler = () => {
     router.push('/' + props.id);
-  }
+  };
 
   return (
     <li className={classes.item}>
@@ -25,6 +25,6 @@ function VitaminItem(props) {
       </Card>
     </li>
   );
-}
+};
 
 export default VitaminItem;

@@ -1,15 +1,20 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import classes from './LeftSideBanner.module.css';
-import {leftCurrentSlideImageState, leftSlideImageState} from "../../atoms/stateAtoms";
-import {useRecoilState, useRecoilValue} from "recoil";
+import {
+  leftCurrentSlideImageState,
+  leftSlideImageState,
+} from '../../atoms/stateAtoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 // Props 로 들어올 BannerImages 는 이미지의 경로를 담은 배열
 // interval 은 이미지가 전환되는 시간 간격을 나타냄
 
-function LeftSideBanner({interval }) {
+const LeftSideBanner = ({ interval }) => {
   {
     // currentSlideImage 는 현재 보여지는 이미지의 index 를 나타냄
-    const [currentSlideImage, setCurrentSlideImage] = useRecoilState(leftCurrentSlideImageState);
+    const [currentSlideImage, setCurrentSlideImage] = useRecoilState(
+      leftCurrentSlideImageState,
+    );
     const LeftBannerImages = useRecoilValue(leftSlideImageState);
 
     // useEffect 를 이용하여 interval 마다 currentSlideImage 를 변경
@@ -43,6 +48,6 @@ function LeftSideBanner({interval }) {
       </div>
     );
   }
-}
+};
 
 export default LeftSideBanner;

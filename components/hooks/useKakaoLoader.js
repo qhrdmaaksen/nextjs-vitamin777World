@@ -1,9 +1,9 @@
-import {useEffect} from 'react';
-import {useRecoilState} from "recoil";
-import {isLoadedState} from "../../atoms/stateAtoms";
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { isLoadedState } from '../../atoms/stateAtoms';
 
 // 카카오 지도 API 를 로드하는 커스텀 훅
-function useKakaoLoader() {
+const useKakaoLoader = () => {
   // 로드 완료 상태 관리
   const [isLoaded, setIsLoaded] = useRecoilState(isLoadedState);
 
@@ -36,6 +36,6 @@ function useKakaoLoader() {
 
   // 로드 완료 상태 반환
   return isLoaded;
-}
+};
 
 export default useKakaoLoader;

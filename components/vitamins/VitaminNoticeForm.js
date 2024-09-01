@@ -1,23 +1,23 @@
 import { useRef } from 'react';
 import Card from '../ui/Card';
 
-function VitaminNoticeForm(props) {
+const VitaminNoticeForm = (props) => {
   const noticeTitleInputRef = useRef();
   const noticeContentInputRef = useRef();
 
-  function noticeSubmitHandler(e){
-      e.preventDefault();
+  const noticeSubmitHandler = (e) => {
+    e.preventDefault();
 
-      const enteredNoticeTitle = noticeTitleInputRef.current.value;
-      const enteredNoticeContent = noticeContentInputRef.current.value;
+    const enteredNoticeTitle = noticeTitleInputRef.current.value;
+    const enteredNoticeContent = noticeContentInputRef.current.value;
 
-      const vitaminNoticeData = {
-          noticeTitle: enteredNoticeTitle,
-          noticeContent: enteredNoticeContent
-      }
+    const vitaminNoticeData = {
+      noticeTitle: enteredNoticeTitle,
+      noticeContent: enteredNoticeContent,
+    };
 
-      props.onAddNotice(vitaminNoticeData);
-  }
+    props.onAddNotice(vitaminNoticeData);
+  };
 
   return (
     <>
@@ -46,5 +46,5 @@ function VitaminNoticeForm(props) {
       </Card>
     </>
   );
-}
+};
 export default VitaminNoticeForm;

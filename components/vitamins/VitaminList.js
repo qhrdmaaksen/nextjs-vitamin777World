@@ -1,7 +1,7 @@
 import VitaminItem from './VitaminItem';
 import classes from './VitaminList.module.css';
 
-function VitaminList(props) {
+const VitaminList = (props) => {
   return (
     <ul className={classes.list}>
       {props.vitamins.map((vitamin) => (
@@ -15,6 +15,6 @@ function VitaminList(props) {
       ))}
     </ul>
   );
-}
+};
 
 export default VitaminList;

@@ -19,8 +19,7 @@ const DROPDOWN_CONTENT = {
   ],
 };
 
-
-function HoverDropMenuComponent({ title }) {
+const HoverDropMenuComponent = ({ title }) => {
   // 드롭 다운 메뉴의 열림과 닫힘 상태 관리 isOpenDropMenu
   const [isOpenDropMenu, setIsOpenDropMenu] = useState(false);
   // 터지 메뉴 여부 확인 상태 관리 isTouchMenu
@@ -90,6 +89,6 @@ function HoverDropMenuComponent({ title }) {
       )}
     </div>
   );
-}
+};
 
 export default HoverDropMenuComponent;

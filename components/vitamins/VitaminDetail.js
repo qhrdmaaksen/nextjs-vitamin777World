@@ -2,6 +2,7 @@ import classes from './VitaminDetail.module.css';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { errorMessageState, isLoadingState } from '../../atoms/stateAtoms';
+import Card from '../ui/Card';
 
 const VitaminDetail = ({ isLoggedIn, ...props }) => {
   const vitaminData = props;
@@ -57,28 +58,36 @@ const VitaminDetail = ({ isLoggedIn, ...props }) => {
         title: vitaminData.title,
         image: vitaminData.image,
         address: vitaminData.address,
-        description: vitaminData.description
+        description: vitaminData.description,
       },
     });
     console.log('vitaminDataId: ', vitaminData.id);
   };
 
   return (
-    <section className={classes.detail}>
-      <img src={vitaminData.image} alt={vitaminData.title} />
-      <h1>{vitaminData.title}</h1>
-      <address>{vitaminData.address}</address>
-      <p>{vitaminData.description}</p>
-      {errorMessage && <p>{errorMessage}</p>}
-      {isLoggedIn && (
-        <>
-          <button onClick={handleItemEdit}>수정</button>
-          <button onClick={handleItemDelete} disabled={isLoading}>
-            {isLoading ? `삭제중...` : '삭제'}
-          </button>
-        </>
-      )}
-    </section>
+    <Card>
+      <section className={classes.detail}>
+        <img src={vitaminData.image} alt={vitaminData.title} />
+        <h1>{vitaminData.title}</h1>
+        <div>
+          <label htmlFor="address">제품 링크</label>
+          <address>{vitaminData.address}</address>
+        </div>
+        <div>
+          <label htmlFor="description">상세 설명</label>
+          <p>{vitaminData.description}</p>
+        </div>
+        {errorMessage && <p>{errorMessage}</p>}
+        {isLoggedIn && (
+          <>
+            <button onClick={handleItemEdit}>수정</button>
+            <button onClick={handleItemDelete} disabled={isLoading}>
+              {isLoading ? `삭제중...` : '삭제'}
+            </button>
+          </>
+        )}
+      </section>
+    </Card>
   );
 };
 

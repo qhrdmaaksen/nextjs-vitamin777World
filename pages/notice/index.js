@@ -1,22 +1,23 @@
 import Button from 'react-bootstrap/Button';
-import VitaminNoticeModal from '../../components/vitamins/VitaminNoticeModal';
+import VitaminNoticeModal from '../../public/utils/VitaminNoticeModal';
 import VitaminNoticeList from '../../components/vitamins/VitaminNoticeList';
-import {getMongoUrl} from '../../config/db';
-import {MongoClient} from 'mongodb';
-import {useRecoilState} from "recoil";
-import {noticeModalShowState} from "../../atoms/stateAtoms";
+import { getMongoUrl } from '../../config/db';
+import { MongoClient } from 'mongodb';
+import { useRecoilState } from 'recoil';
+import { noticeModalShowState } from '../../atoms/stateAtoms';
 
-function VitaminNoticePage(props) {
-  const [noticeModalShow, setNoticeModalShow] = useRecoilState(noticeModalShowState);
+const VitaminNoticePage = (props) => {
+  const [noticeModalShow, setNoticeModalShow] =
+    useRecoilState(noticeModalShowState);
 
-  function handleNoticeModalShow() {
+  const handleNoticeModalShow = () => {
     console.log('handleNoticeModalShow');
     setNoticeModalShow(true);
-  }
+  };
 
-  function handleNoticeModalHide() {
+  const handleNoticeModalHide = () => {
     setNoticeModalShow(false);
-  }
+  };
 
   return (
     <>
@@ -33,9 +34,9 @@ function VitaminNoticePage(props) {
       />
     </>
   );
-}
+};
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const client = await MongoClient.connect(getMongoUrl());
 
   const db = client.db();
@@ -55,6 +56,6 @@ export async function getStaticProps() {
     },
     revalidate: 1,
   };
-}
+};
 
 export default VitaminNoticePage;

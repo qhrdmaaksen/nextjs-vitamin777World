@@ -2,8 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/vitaminEdit": "pages/vitaminEdit.js",
   "/": "pages/index.js",
   "/[vitaminId]": "pages/[vitaminId].js",
-  "/api/updateVitamin": "pages/api/updateVitamin.js"
+  "/vitaminEdit": "pages/vitaminEdit.js"
 }

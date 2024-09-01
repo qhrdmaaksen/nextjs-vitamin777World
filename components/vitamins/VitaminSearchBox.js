@@ -45,14 +45,14 @@ export const VitaminSearchBox = () => {
         이유: onChange 이벤트를 통해 사용자 입력을 실시간으로 searchTerm 상태에 업데이트하고,
         value 속성을 통해 상태와 입력 필드를 동기화함*/}
         <div className={classes.searchInputDiv}>
-            <p>제품 검색</p>
-            <input
-              className={classes.searchInputLarge}
-              type="text"
-              placeholder="제품을 입력해주세요."
-              onChange={(e) => setSearchTerm(e.target.value)}
-              value={searchTerm}
-            />
+          <p>제품 검색</p>
+          <input
+            className={classes.searchInputLarge}
+            type="text"
+            placeholder="제품을 입력해주세요."
+            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
+          />
         </div>
       </form>
     </>
