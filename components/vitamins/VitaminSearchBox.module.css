@@ -1,12 +1,14 @@
 .searchInputDiv {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  margin-top: 2rem;
 }
 
-.searchInputDiv p {
+.searchInputDiv label {
   font-size: 20px;
   font-weight: bold;
+  margin-right: 2rem;
 }
 
 .searchInputLarge {
@@ -14,3 +16,18 @@
   height: 40px;
   border-radius: 10px;
 }
+
+.magnifierBtn {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  border-radius: 10px;
+  margin-left: -2%;
+}
+
+.magnifier {
+  cursor: pointer;
+  margin-top: 2px;
+  margin-left: 2px;
+}
+

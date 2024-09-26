@@ -53,3 +53,18 @@
   background-color: #ccc; /* 비활성화된 버튼 색상 */
   cursor: not-allowed; /* 비활성화된 버튼 커서 */
 }
+
+.homeContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.leftBanner {
+  height: 100%;
+  width: 100%;
+}
+
+.rightBanner {
+
+}

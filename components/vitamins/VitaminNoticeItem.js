@@ -3,6 +3,9 @@ import VitaminNoticeModal from '../../public/utils/VitaminNoticeModal';
 import { showModalState } from '../../atoms/stateAtoms';
 import { useRecoilState } from 'recoil';
 
+const modalTitle = 'vitaminNoticeModalTitle';
+const modalContent = 'vitaminNoticeModalContent';
+const modalHeading = 'vitaminNoticeHeading';
 const VitaminNoticeItem = (props) => {
   const [showModal, setShowModal] = useRecoilState(showModalState);
   return (
@@ -19,10 +22,10 @@ const VitaminNoticeItem = (props) => {
         </li>
       </ul>
       <VitaminNoticeModal
-        title=""
-        content=""
+        title={modalTitle}
+        content={modalContent}
         show={showModal}
-        heading=""
+        heading={modalHeading}
         onHide={() => setShowModal(false)}
       />
     </>

@@ -1,10 +1,12 @@
 import classes from './MainNavigation.module.css';
 import Link from 'next/link';
 import HoverDropMenuComponent from '../vitamins/HoverDropMenuComponent';
-import RightSideBanner from "../banner/RightSideBanner";
-import LeftSideBanner from "../banner/LeftSideBanner";
+import RightSideBanner from '../banner/RightSideBanner';
+import LeftSideBanner from '../banner/LeftSideBanner';
+import VitaminSearchBox from '../vitamins/VitaminSearchBox';
 
-const MainNavigation = () => {
+const MainNavigation = (props) => {
+  const { setVitamins } = props;
   return (
     <>
       <header className={classes.header}>
@@ -24,11 +26,22 @@ const MainNavigation = () => {
                 <p className={classes.title}>vitamin777World</p>
               </Link>
             </li>
+            <li>
+              <Link href="/adminLoginPage">
+                <p className={classes.adminLogin}>관리자 로그인</p>
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>
-      <RightSideBanner interval={4000} />
-      <LeftSideBanner interval={4000} />
+
+      <div className={classes.bannerContainer}>
+        <LeftSideBanner interval={4000} />
+        <div className={classes.searchClass}>
+        <VitaminSearchBox setVitamins={{ setVitamins }} />
+        </div>
+        <RightSideBanner interval={4000} />
+      </div>
     </>
   );
 };

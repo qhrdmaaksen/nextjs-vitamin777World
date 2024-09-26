@@ -32,20 +32,19 @@ const RightSideBanner = ({ interval }) => {
     }, [RightBannerImages.length, interval]);
 
     return (
-      <div className={classes.sideBanner}>
-        <div className={classes.bannerContent}>
-          {RightBannerImages.map((bannerImage, index) => (
-            <img
-              key={index}
-              src={bannerImage}
-              alt={`Slide ${index}`}
-              style={{
-                display: index === currentSlideImage ? 'block' : 'none',
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      <>
+        {RightBannerImages.map((bannerImage, index) => (
+          <img
+            className={classes.imgClass}
+            key={index}
+            src={bannerImage}
+            alt={`Slide ${index}`}
+            style={{
+              display: index === currentSlideImage ? 'block' : 'none',
+            }}
+          />
+        ))}
+      </>
     );
   }
 };

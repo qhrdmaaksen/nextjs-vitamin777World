@@ -42,3 +42,17 @@
   color: black;
   font-weight: bold;
 }
+
+.adminLogin {
+  font-size: 1rem;
+}
+
+.bannerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5%;
+}
+
+.searchClass {
+  margin-top: 5%;
+}

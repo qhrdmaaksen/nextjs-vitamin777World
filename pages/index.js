@@ -2,12 +2,12 @@ import VitaminList from '../components/vitamins/VitaminList';
 import { Fragment, useState } from 'react';
 import { MongoClient } from 'mongodb';
 import Head from 'next/head';
-import RightSideBanner from '../components/banner/RightSideBanner';
-import LeftSideBanner from '../components/banner/LeftSideBanner';
 import AdminInputForm from '../components/vitamins/AdminInputForm';
 import { getMongoUrl } from '../config/db';
-import VitaminSearchBox from '../components/vitamins/VitaminSearchBox';
 import classes from './HomePage.module.css';
+import LeftSideBanner from '../components/banner/LeftSideBanner';
+import RightSideBanner from '../components/banner/RightSideBanner';
+import MainNavigation from '../components/layout/MainNavigation';
 
 const HomePage = (props) => {
   const [vitamins, setVitamins] = useState(props.vitamins);
@@ -50,7 +50,8 @@ const HomePage = (props) => {
   };
 
   // 현재 페이지를 기준으로 보여줄 페이지 범위 계산
-  const startPage = Math.floor((currentPage - 1) / itemsPerPage) * itemsPerPage + 1;
+  const startPage =
+    Math.floor((currentPage - 1) / itemsPerPage) * itemsPerPage + 1;
   const endPage = Math.min(startPage + itemsPerPage - 1, totalPages);
 
   return (
@@ -62,37 +63,42 @@ const HomePage = (props) => {
           content="vitamin, vitamins, health, multi vitamin, vitamins platform"
         />
       </Head>
-      <VitaminSearchBox setVitamins={{ setVitamins }} />
-      <RightSideBanner interval={4000} />
-      <LeftSideBanner interval={4000} />
-      <AdminInputForm />
-      <VitaminList vitamins={currentVitamins} />
-
-      {/* 페이지 네비게이션 */}
-      <div className={classes.navigation}>
-        <button className={classes.buttonFirst} onClick={handleFirstPage}>
-          처음으로..
-        </button>
-        <button
-          className={classes.buttonPrevious}
-          disabled={currentPage === 1}
-          onClick={handlePreviousPage}
-        >
-          이전
-        </button>
-        {/* 현재 페이지 기준으로 3개 페이지 버튼 생성*/}
-        {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
-          <button
-            key={startPage + index}
-            className={`${classes.pageButton} ${currentPage === startPage + index ? classes.active : ''}`}
-            onClick={() => handlePageChange(startPage + index)}
-          >
-            {startPage + index}
-          </button>
-        ))}
-        <button className={classes.buttonNext} disabled={currentPage === totalPages} onClick={handleNextPage}>
-          다음
-        </button>
+      <div className={classes.homeContainer}>
+          <LeftSideBanner interval={4000} />
+        <div>
+          <VitaminList vitamins={currentVitamins} />
+          {/* 페이지 네비게이션 */}
+          <div className={classes.navigation}>
+            <button className={classes.buttonFirst} onClick={handleFirstPage}>
+              처음으로..
+            </button>
+            <button
+              className={classes.buttonPrevious}
+              disabled={currentPage === 1}
+              onClick={handlePreviousPage}
+            >
+              이전
+            </button>
+            {/* 현재 페이지 기준으로 3개 페이지 버튼 생성*/}
+            {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
+              <button
+                key={startPage + index}
+                className={`${classes.pageButton} ${currentPage === startPage + index ? classes.active : ''}`}
+                onClick={() => handlePageChange(startPage + index)}
+              >
+                {startPage + index}
+              </button>
+            ))}
+            <button
+              className={classes.buttonNext}
+              disabled={currentPage === totalPages}
+              onClick={handleNextPage}
+            >
+              다음
+            </button>
+          </div>
+        </div>
+          <RightSideBanner interval={4000} />
       </div>
     </>
   );

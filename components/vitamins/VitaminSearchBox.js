@@ -1,22 +1,26 @@
 /*왜?: Recoil 상태 관리 라이브러리에서 상태를 사용하기 위해 useRecoilState 훅을 가져옵니다.
 이유: 상태를 읽고 업데이트할 수 있는 기능을 제공하여, 컴포넌트 간에 상태를 쉽게 공유하고 관리할 수 있도록 함*/
-import { useRecoilState } from 'recoil';
+import {useRecoilState} from 'recoil';
 /*왜?: 상태를 정의한 아톰을 가져옵니다.
 이유: searchTermState는 검색어를 저장하는 상태로, 이 상태를 통해 현재 검색어를 관리*/
-import { searchTermState } from '../../atoms/stateAtoms';
+import {searchTermState} from '../../atoms/stateAtoms';
 /*왜?: Next.js의 라우팅 기능을 사용하기 위해 useRouter 훅을 가져옵니다.
 이유: 페이지 간의 네비게이션을 관리하기 위해 현재 라우터 객체에 접근할 수 있게 함*/
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import classes from './VitaminSearchBox.module.css';
+
+
+const magnifier = './utils/free-icon-search-1150612.png';
 
 /*왜?: 비타민 검색 박스 컴포넌트를 정의합니다.
 이유: 사용자로부터 검색어를 입력받고, 이를 처리하여 검색 결과 페이지로 이동하기 위해 컴포넌트를 생성*/
 export const VitaminSearchBox = () => {
+
   /*왜?: 현재 라우터 객체를 가져옵니다.
 이유: 페이지 전환 및 URL 조작을 위해 router 객체를 사용*/
   const router = useRouter();
   /*왜?: Recoil 상태에서 검색어를 가져오고 업데이트하기 위한 상태 변수를 정의합니다.
-이유: searchTerm은 현재 검색어를 저장하고, setSearchTerm은 검색어를 업데이트하는 함수*/
+이유: searchTerm 은 현재 검색어를 저장하고, setSearchTerm은 검색어를 업데이트하는 함수*/
   const [searchTerm, setSearchTerm] = useRecoilState(searchTermState);
 
   /*폼 제출 이벤트를 처리하기 위한 비동기 함수입니다.
@@ -45,7 +49,7 @@ export const VitaminSearchBox = () => {
         이유: onChange 이벤트를 통해 사용자 입력을 실시간으로 searchTerm 상태에 업데이트하고,
         value 속성을 통해 상태와 입력 필드를 동기화함*/}
         <div className={classes.searchInputDiv}>
-          <p>제품 검색</p>
+          <label htmlFor="searchTerm">제품 검색</label>
           <input
             className={classes.searchInputLarge}
             type="text"
@@ -53,6 +57,12 @@ export const VitaminSearchBox = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             value={searchTerm}
           />
+          <button type="submit" className={classes.magnifierBtn}>
+            <img
+              className={classes.magnifier}
+              src={magnifier}
+            />
+          </button>
         </div>
       </form>
     </>
