@@ -1,9 +1,12 @@
-import AdminInputForm from "../../components/vitamins/AdminInputForm";
+import AdminInputForm from '../../components/vitamins/AdminInputForm';
+import classes from './adminLoginPage.module.css'
 
 const adminLoginPage = () => {
-    return (
-        <AdminInputForm />
-    )
-}
+  return (
+    <div className={classes.adminLoginContainer}>
+      <AdminInputForm />
+    </div>
+  );
+};
 
 export default adminLoginPage;

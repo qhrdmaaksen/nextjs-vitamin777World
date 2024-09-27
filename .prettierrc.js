@@ -25,7 +25,7 @@ module.exports =  {
     //맨마지막 줄 넣는지 여부
     "endOfLine": "auto",
 
-    // .gitignore 처럼 prettier 이 적용되지 않게 하려면 .prettierignore 에 파일명을 기록하면 그 파일은 무시
+    // .gitignore 처럼 prettier 이 적용되지 않게 하려면 .prettier ignore 에 파일명을 기록하면 그 파일은 무시
     // 또한 파일 뿐만 아니고 코드내에서 주석으로 // prettier-ignore 라고 작성하면 해당 코드만 무시
     //ignorePath
     // 이 확장 기능을 비활성화 할 언어 ID 목록

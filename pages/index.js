@@ -1,13 +1,9 @@
 import VitaminList from '../components/vitamins/VitaminList';
-import { Fragment, useState } from 'react';
-import { MongoClient } from 'mongodb';
+import {Fragment, useState} from 'react';
+import {MongoClient} from 'mongodb';
 import Head from 'next/head';
-import AdminInputForm from '../components/vitamins/AdminInputForm';
-import { getMongoUrl } from '../config/db';
+import {getMongoUrl} from '../config/db';
 import classes from './HomePage.module.css';
-import LeftSideBanner from '../components/banner/LeftSideBanner';
-import RightSideBanner from '../components/banner/RightSideBanner';
-import MainNavigation from '../components/layout/MainNavigation';
 
 const HomePage = (props) => {
   const [vitamins, setVitamins] = useState(props.vitamins);
@@ -64,7 +60,6 @@ const HomePage = (props) => {
         />
       </Head>
       <div className={classes.homeContainer}>
-          <LeftSideBanner interval={4000} />
         <div>
           <VitaminList vitamins={currentVitamins} />
           {/* 페이지 네비게이션 */}
@@ -98,7 +93,6 @@ const HomePage = (props) => {
             </button>
           </div>
         </div>
-          <RightSideBanner interval={4000} />
       </div>
     </>
   );

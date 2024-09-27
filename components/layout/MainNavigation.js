@@ -34,16 +34,14 @@ const MainNavigation = (props) => {
           </ul>
         </nav>
       </header>
-
       <div className={classes.bannerContainer}>
         <LeftSideBanner interval={4000} />
         <div className={classes.searchClass}>
-        <VitaminSearchBox setVitamins={{ setVitamins }} />
+          <VitaminSearchBox setVitamins={setVitamins} />
         </div>
         <RightSideBanner interval={4000} />
       </div>
     </>
   );
 };
-
 export default MainNavigation;

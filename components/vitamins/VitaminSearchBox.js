@@ -52,6 +52,7 @@ export const VitaminSearchBox = () => {
           <label htmlFor="searchTerm">제품 검색</label>
           <input
             className={classes.searchInputLarge}
+            id="searchTerm"
             type="text"
             placeholder="제품을 입력해주세요."
             onChange={(e) => setSearchTerm(e.target.value)}
