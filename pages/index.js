@@ -1,8 +1,8 @@
 import VitaminList from '../components/vitamins/VitaminList';
-import {Fragment, useState} from 'react';
-import {MongoClient} from 'mongodb';
+import { Fragment, useState } from 'react';
+import { MongoClient } from 'mongodb';
 import Head from 'next/head';
-import {getMongoUrl} from '../config/db';
+import { getMongoUrl } from '../config/db';
 import classes from './HomePage.module.css';
 
 const HomePage = (props) => {

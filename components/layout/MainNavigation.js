@@ -28,7 +28,7 @@ const MainNavigation = (props) => {
             </li>
             <li>
               <Link href="/adminLoginPage">
-                <p className={classes.adminLogin}>관리자 로그인</p>
+                <p className={classes.adminLogin}>관리자 페이지</p>
               </Link>
             </li>
           </ul>

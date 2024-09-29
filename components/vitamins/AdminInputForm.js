@@ -10,13 +10,13 @@ const AdminInputForm = () => {
   const passwordInputRef = useRef();
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
 
-  const loginSubmitHandler = (event) => {
+  const loginSubmitHandler = async (event) => {
     event.preventDefault();
 
     const enteredId = idInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    // 하드코딩된 admin info
+    /*// 하드코딩된 admin info
     const adminId = 'admin';
     const adminPassword = 'adminPassword';
 
@@ -30,6 +30,29 @@ const AdminInputForm = () => {
     } else {
       // 로그인 실패 시 알림창 팝업
       alert('관리자 정보가 일치하지 않습니다');
+    }
+  };*/
+
+    // api 요청
+    const response = await fetch('/api/adminApi', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        adminId: enteredId,
+        adminPassword: enteredPassword,
+      }),
+    });
+
+    const data = await response.json();
+
+    if( response.ok ) {
+      console.log('클라이언트 측 로그인 성공: ', data);
+      alert('관리자 로그인 성공');
+      setIsLoggedIn(true);
+    } else {
+      console.error('클라이언트 측 로그인 실패: ', data.message);
     }
   };
 
